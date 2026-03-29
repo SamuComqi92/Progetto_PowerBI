@@ -1,0 +1,40 @@
+table Table
+	lineageTag: 3f5c3c7c-7460-482b-b1b1-ef89cc18d234
+
+	column Country
+		dataType: string
+		lineageTag: f9ab020e-b3c8-4c59-817a-86996b151f1b
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c7364fd-6a50-47f6-94c8-9c11c56c0551
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column Products
+		dataType: int64
+		formatString: 0
+		lineageTag: 0995e688-9e51-425c-85a2-d8f5eb9c7f36
+		summarizeBy: sum
+		sourceColumn: Products
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Table = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45W8ixJzKlU0lEyMTUzMTYCMcyNlWJ1opWCCxIz84B8QyNjoByQYQaUBkm4pxblJuaB9JiamRsCKXMzU7CEW1FiXnIq2CwTc5AOQ0NDpdhYAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Country = _t, Sales = _t, Products = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Country", type text}, {"Sales", Int64.Type}, {"Products", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
