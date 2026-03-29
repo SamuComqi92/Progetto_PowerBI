@@ -1,6 +1,11 @@
 table Table
 	lineageTag: 3f5c3c7c-7460-482b-b1b1-ef89cc18d234
 
+	measure Measure = DIVIDE( SUM('Table'[Sales]), SUM('Table'[Products]) )
+		lineageTag: 4c045df2-ea1b-4ab0-a03f-422b760bae9b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Country
 		dataType: string
 		lineageTag: f9ab020e-b3c8-4c59-817a-86996b151f1b
