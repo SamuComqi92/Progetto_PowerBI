@@ -6,6 +6,11 @@ table Table
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure New_measure = AVERAGE('Table'[Sales])
+		lineageTag: c795bdfe-d931-478c-b6c3-bfe004e5fee4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Country
 		dataType: string
 		lineageTag: f9ab020e-b3c8-4c59-817a-86996b151f1b
